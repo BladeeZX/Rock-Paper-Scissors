@@ -40,12 +40,12 @@ function round() {
 
     if (computerChoice === playerChoice) {
         result = "Draw";
-    } else if (playerChoice === rock && computerChoice === paper) {
-        result = "You lose, paper beats rock!"
-    } else if (playerChoice === paper && computerChoice === scissors) {
-        result = "You lose, scissors cut paper!"
-    } else if (playerChoice === scissors && computerChoice === rock) {
-        result = "You lose, scissors shatter on a rock!"
+    } else if (playerChoice === "rock" && computerChoice === "paper") {
+        result = "You lose, paper beats rock!";
+    } else if (playerChoice === "paper" && computerChoice === "scissors") {
+        result = "You lose, scissors cut paper!";
+    } else if (playerChoice === "scissors" && computerChoice === "rock") {
+        result = "You lose, scissors shatter on a rock!";
     }
       else {
         result = "You win this round";

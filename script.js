@@ -7,15 +7,15 @@ function getPlayerChoice() {
     /*Turns input to lower case for the sake of clarity and fixing errors*/
     userInput = userInput.toLowerCase();
 
-    if (userInput === "rock"){
+    if (userInput === "rock") {
       return userInput;
     } else if (userInput === "paper"){
       return userInput;
     } else if (userInput === "scissors"){
       return userInput;
-    } else{
-      console.log("Error! not valid input.")
-      return;
+    } else {
+      console.log("Error! not valid input. Enter Valid Input")
+      return getPlayerChoice();
     }
 
   }
@@ -31,13 +31,13 @@ function getComputerChoice() {
 }
 
 let computerChoice = getComputerChoice();
-let playerChoice = getPlayerChoice();
 /*it works till this moment*/
 
 
 /* Allows round to play out */
 function round() {
-
+    let result;
+    let playerChoice = getPlayerChoice();
     if (computerChoice === playerChoice) {
         result = "Draw";
     } else if (playerChoice === "rock" && computerChoice === "paper") {
@@ -46,13 +46,15 @@ function round() {
         result = "You lose, scissors cut paper!";
     } else if (playerChoice === "scissors" && computerChoice === "rock") {
         result = "You lose, scissors shatter on a rock!";
-    }
-      else {
+    } else {
         result = "You win this round";
     }
-
+    return result;
 }
 
-round();
 
-console.log(round(playerChoice, computerChoice));
+
+let playerSelection = getPlayerChoice();
+let computerSelection = getComputerChoice();
+let result = round(playerSelection, computerSelection);
+console.log(result);

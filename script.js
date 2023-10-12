@@ -1,16 +1,12 @@
 alert('Welcome to the hunger games');
-let paper = "paper";
-let rock = "rock";
-let scissors = "scissors";
-
-
 let userInput = prompt("Choose Wisely");
 
 /*defines what happens with input and converts input to lover case*/
 
 let playerChoice = userInput => {
-
+    /*Turns input to lower case for the sake of clarity and fixing errors*/
     userInput = userInput.toLowerCase();
+
     if (userInput === "rock"){
       return userInput;
     } else if (userInput === "paper"){
@@ -20,7 +16,6 @@ let playerChoice = userInput => {
     } else{
       console.log("Error! not valid input.")
       return;
-    
     }
 
   }
@@ -29,7 +24,7 @@ let playerChoice = userInput => {
 
 function getComputerChoice() {
 
-    let choice = [rock, paper, scissors];
+    let choice = ["rock", "paper", "scissors"];
     let randomElement = choice[Math.floor(Math.random() * choice.length)];
     return randomElement;
 

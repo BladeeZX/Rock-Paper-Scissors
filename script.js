@@ -1,5 +1,8 @@
 alert("Welcome to the hunger games");
 let userInput = prompt("Choose Wisely");
+let playerScore = 0;
+let computerScore = 0;
+let roundWinner = "";
 
 /*defines what happens with input and converts input to lover case*/
 
@@ -28,28 +31,45 @@ function getComputerChoice() {
 }
 
 let computerChoice = getComputerChoice();
-/*it works till this moment*/
 
+/*Allows game to play out*/
 function game() {
-  /* Allows round to play out */
-  function round() {
-    let result;
-    let playerChoice = getPlayerChoice();
-    if (computerChoice === playerChoice) {
-      result = "Draw";
-    } else if (playerChoice === "rock" && computerChoice === "paper") {
-      result = "You lose, paper beats rock!";
-    } else if (playerChoice === "paper" && computerChoice === "scissors") {
-      result = "You lose, scissors cut paper!";
-    } else if (playerChoice === "scissors" && computerChoice === "rock") {
-      result = "You lose, scissors shatter on a rock!";
-    } else {
-      result = "You win this round";
+  let playerScore = 0;
+  let computerScore = 0;
+
+  for (let roundCount = 0; roundCount < 5; roundCount++) {
+    function round() {
+      /* Allows round to play out */
+      let result;
+      let playerChoice = getPlayerChoice(); // players choice
+      let computerChoice = getComputerChoice(); // computers choice
+      if (computerChoice === playerChoice) {
+        result = "Draw";
+      } else if (
+        (playerChoice === "rock" && computerChoice === "paper") ||
+        (playerChoice === "paper" && computerChoice === "scissors") ||
+        (playerChoice === "scissors" && computerChoice === "rock")
+      ) {
+        result = "You lose this round";
+        computerScore++;
+      } else {
+        result = "You win this round";
+        playerScore++;
+      }
+      console.log(result); // result of round
     }
-    return result;
+
+    round(); // allows us to have multiple rounds
+  }
+
+  // determines the winner
+  if (playerScore > computerScore) {
+    console.log("Congratulations! You win the match!");
+  } else if (playerScore < computerScore) {
+    console.log("Sorry, you lose the match. Better luck next time!");
+  } else {
+    console.log("It's a draw! The match is tied.");
   }
 }
-let playerSelection = getPlayerChoice();
-let computerSelection = getComputerChoice();
-let result = round(playerSelection, computerSelection);
-console.log(result);
+
+game(); //calls game function
